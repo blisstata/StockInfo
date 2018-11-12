@@ -41,7 +41,7 @@ paths:
     description: Returns a list of all the customers.
     responses: 
      '200':
-       description: A list of customers.
+       description: "A list of customers"
        content: 
         application/json:
          schema:
@@ -55,7 +55,7 @@ paths:
          schema:
           $ref: '#/components/schemas/problem'
      '401':
-       description: "user is not authenttcated"
+       description: "user is not authenticated"
        content:
         application/json:
          schema:
@@ -65,5 +65,67 @@ paths:
        content:
         application/json:
          schema:
-          $ref: '#/components/schemas/problem'           
+          $ref: '#/components/schemas/problem'         
+ 
+ /get-customer-data:
+   get:
+    description: Returns the customer data for the corresponding customer id.
+    parameters:
+     - in: path
+       name: id
+       required: true
+       schema: 
+         type: string
+       description: user id  
+    responses:
+     '200':
+       description: 'customer data for the corresponding id'  
+       content:
+        application/json:
+         schema:
+          $ref: '#/components/schemas/customer'
+      
+     '400':
+       description: 'Bad Request'
+       content:
+        application/json:
+         schema:
+          $ref: '#/components/schemas/problem'                
      
+     '500':
+       description: 'Internal Server Error'
+       content:
+        application/json:
+         schema:
+          $ref: '#/components/schemas/problem'
+
+ /update-customer-data:
+   patch:
+    description: update the data of a customer with the stock id.
+    requestBody:
+     content:
+      application/json:
+       schema:
+        type: object
+        properties:
+         stockId:
+          type: string
+         id:
+          type: string  
+    responses:
+     '201':
+       description: 'update the customer stock data'
+
+     '400':
+       description: 'Bad Request'
+       content:
+        application/json:
+         schema:
+          $ref: '#/components/schemas/problem'                
+     
+    '500':
+      description: 'Internal Server Error'
+      content:
+      application/json:
+        schema:
+        $ref: '#/components/schemas/problem' 
