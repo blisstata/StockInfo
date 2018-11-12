@@ -10,7 +10,7 @@ const server = new Hapi.Server();
 const bootstrap = () => {
     server.connection({port: options.port, host: options.host});
     server.route(routes);
-    server.start((err) => {
+    server.start(() => {
         console.log('Server started at: ' + server.info.uri);
     });
 };
