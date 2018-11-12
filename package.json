@@ -6,7 +6,6 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "npm run build && node dist/index.js",
-    "hello": "echo \"bar\" && exit 0",
     "lint": "node_modules/.bin/eslint src/server/**.js"
   },
   "repository": {
